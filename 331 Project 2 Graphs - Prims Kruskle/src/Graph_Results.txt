@@ -1,0 +1,24 @@
+Prim's MST Prim's vs Kruskal's Comparison
+2^,N,Microseconds, , , , , , , , , , Prim's MST
+3, 8, Nodes, Edges,  Ratio, 
+64, 28, 0,
+Prim's MST Prim's vs Kruskal's Comparison
+2^,N,Microseconds, , , , , , , , , , Prim's MST
+3, 8, Nodes, Edges,  Ratio, 
+64, 28, 0,
+Prim's MST Prim's vs Kruskal's Comparison
+2^,N,Microseconds, , , , , , , , , , Prim's MST
+3, 8, Nodes, Edges,  Ratio, 
+128, 395, 3,
+Prim's MST Prim's vs Kruskal's Comparison
+2^,N,Microseconds, , , , , , , , , , Prim's MST
+3, 8, Nodes, Edges,  Ratio, 
+256, 1800, 7,
+Prim's MST Prim's vs Kruskal's Comparison
+2^,N,Microseconds, , , , , , , , , , Prim's MST
+3, 8, Nodes, Edges,  Ratio, 
+512, 7063, 13,
+Prim's MST Prim's vs Kruskal's Comparison
+2^,N,Microseconds, , , , , , , , , , Prim's MST
+3, 8, Nodes, Edges,  Ratio, 
+1024, 52120, 50,

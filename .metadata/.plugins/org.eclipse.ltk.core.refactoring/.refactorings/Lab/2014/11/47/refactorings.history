@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Text_Files&apos; to &apos;331 Project 2 Graphs - Prims Kruskle&apos;&#x0D;&#x0A;- Original project: &apos;Lab&apos;&#x0D;&#x0A;- Destination element: &apos;331 Project 2 Graphs - Prims Kruskle&apos;&#x0D;&#x0A;- Original element: &apos;Text_Files&apos;" description="Copy folder" destination="=331 Project 2 Graphs - Prims Kruskle" element1="Text_Files" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1416442274076" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,304 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.TreeMap;
+
+
+public class Project1 
+{
+
+	public static void main(String[] args) 
+	{
+
+		String itemsFileName, ordersFileName;
+		//args[0] = items; args[1] = orders
+		if(args.length>1)
+		{
+			itemsFileName = args[0];
+			ordersFileName = args[1];
+		}
+		else
+		{
+			itemsFileName = "items1.txt";
+			ordersFileName = "orders1.txt";
+		}
+		
+		
+		//create trees for users and items
+		TreeMap<String, Integer> items = new TreeMap<String, Integer>();
+		TreeMap<String, ArrayList<String>> users = new TreeMap<String, ArrayList<String>>();
+				
+		//populate items tree
+		readItems(items,itemsFileName);
+		
+		
+		//printAll(items);
+
+		//execute orders
+		translateOrders(users, items, ordersFileName);
+		
+		
+
+	}
+	
+	
+	private static void translateOrders(TreeMap<String, ArrayList<String>> users, TreeMap<String, Integer> items, String fileName)
+	{
+		Scanner itemFile;
+		Order order = new Order(users, items);
+		
+		try
+		{
+			itemFile = new Scanner(new BufferedReader(new FileReader(fileName)));
+		}
+		catch(FileNotFoundException e)
+		{
+			System.err.println(e);
+			return;
+		}
+		
+		String cmd = "", arg1 = "", arg2 = "";
+		
+		while(itemFile.hasNext())
+		{
+			if(cmd.equals(""))
+			{
+				cmd = itemFile.next();				
+			}
+			if(itemFile.hasNext()) arg1 = itemFile.next();
+			if(itemFile.hasNext()) arg2 = itemFile.next();
+			
+			
+			order.cmd = cmd;
+			cmd = "";
+			order.arg1 = arg1;
+			arg1 = "";
+			
+			if(arg2.equals("add")||arg2.equals("view")||arg2.equals("checkout")||arg2.equals("delete"))
+			{
+				cmd = arg2;
+				order.arg2 = "";
+			} else {
+				order.arg2 = arg2;
+			}
+			arg2 = "";
+			
+			order.exec();
+		}
+		
+		
+		itemFile.close();
+		
+		
+		
+	}
+	private static void readItems(TreeMap<String, Integer> items, String fileName)
+	{
+		Scanner itemFile;
+		String word;
+		String change;
+		Integer price;
+		
+		try
+		{
+			itemFile = new Scanner(new BufferedReader(new FileReader(fileName)));
+		}
+		catch(FileNotFoundException e)
+		{
+			System.err.println(e);
+			return;
+		}
+		
+		while(itemFile.hasNext())
+		{
+			word = itemFile.next();
+			change = itemFile.next();			
+			price = Integer.parseInt(change.replaceAll("[^a-zA-Z0-9]+",""));
+			items.put(word,  price);
+		}
+		
+		itemFile.close();
+	}
+	
+	private static void printAll(TreeMap<String, Integer> items)
+	{
+		System.out.println("----------------------");
+		
+		for(String word: items.keySet())
+		{
+			System.out.printf("%10s%15d\n", word, items.get(word));
+		}
+		System.out.println("----------------------");
+	}
+
+}
+
+/*public class WordCounter 
+{
+
+public static void main(String[] args) 
+{
+	TreeMap<String, Integer> frequencyData = new TreeMap<String, Integer>();
+	readWordFile(frequencyData);
+	printAllCounts(frequencyData);
+}
+
+private static int getCount(String word, TreeMap<String, Integer> frequencyData)
+{
+	if(frequencyData.containsKey(word))
+	{
+		//the word has occurred before, so get its count from the map
+		return frequencyData.get(word);
+	}else{
+		return 0;
+	}
+}
+
+private static void printAllCounts(TreeMap<String, Integer> frequencyData)
+{
+	System.out.println("----------------------");
+	System.out.println("   Occurrences   Word");
+	
+	for(String word: frequencyData.keySet())
+	{
+		System.out.printf("%15d    %s\n", frequencyData.get(word), word);
+	}
+	System.out.println("----------------------");
+}
+
+private static void readWordFile(TreeMap<String, Integer> frequencyData)
+{
+	Scanner wordFile;
+	String word;
+	Integer count;
+	
+	try
+	{
+		wordFile = new Scanner(new FileReader("words.txt"));
+	}
+	catch(FileNotFoundException e)
+	{
+		System.err.println(e);
+		return;
+	}
+	
+	while(wordFile.hasNext())
+	{
+		word = wordFile.next();
+		
+		count = getCount(word, frequencyData) +1;
+		frequencyData.put(word,  count);
+	}
+}
+
+}*/
+
+---------------------------
+import java.util.ArrayList;
+import java.util.TreeMap;
+
+
+public class Order 
+{
+	public String cmd;
+	public String arg1;
+	public String arg2;
+	TreeMap<String, ArrayList<String>> users;
+	TreeMap<String, Integer> items;
+	
+	Order(TreeMap<String, ArrayList<String>> users,	TreeMap<String, Integer> items)
+	{
+		cmd = "";
+		arg1 = "";
+		arg2 = "";
+		this.users = users;
+		this.items = items;
+	}
+	
+	public void exec()
+	{
+		
+		switch(cmd)
+		{
+		case "add":add();
+			break;
+		case "view":view();
+			break;
+		case "checkout":checkout();
+			break;
+		case "delete":delete();
+			break;
+		default: System.out.println(cmd + " is an invalid order.");
+				
+		}
+	}
+	
+	
+	
+	private void add()
+	{
+		System.out.println(cmd + " " + arg1 + " " + arg2);
+		if(users.containsKey(arg1))
+		{
+			users.get(arg1).add(arg2);
+		} else {
+			ArrayList<String> s = new ArrayList<String>();
+			s.add(arg2);
+			users.put(arg1, s);
+		}
+	}
+	
+	private void view()
+	{
+		System.out.println(cmd + " " + arg1 + " " + arg2);
+		if(users.containsKey(arg1))
+		{
+			ArrayList<String> s = users.get(arg1);
+			System.out.println(arg1 + " has ordered:");
+			for(String word : s)
+			{
+				System.out.printf("%10s   $%4d\n", word, items.get(word));
+			}
+		}else{
+			System.out.println("No " + arg1 +" found!");
+		}
+		
+	}
+	
+	private void checkout()
+	{
+		System.out.println(cmd + " " + arg1 + " " + arg2);
+		if(users.containsKey(arg1))
+		{
+			ArrayList<String> s = users.get(arg1);
+			int total = 0;
+			System.out.println(arg1 + " has ordered:");
+			for(String word : s)
+			{
+				total += items.get(word);
+				System.out.printf("%10s   $%4d\n", word, items.get(word));
+			}
+			System.out.printf("%s%s   $%5d\n", arg1, "'s total is:", total);
+		}else{
+			System.out.println("No " + arg1 +" found!");
+		}
+	}
+	
+	private void delete()
+	{
+		System.out.println(cmd + " " + arg1 + " " + arg2);
+		if(users.containsKey(arg1))
+		{
+			ArrayList<String> s = users.get(arg1);
+			if(s.remove(arg2))
+			{
+				System.out.println(arg2 + " has been removed from " + arg1 + "'s cart.");
+			}
+		}else{
+			System.out.println("No " + arg1 +" found!");
+		}
+	}
+
+}

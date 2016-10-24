@@ -1,0 +1,68 @@
+{
+  "C:\\Users\\RCS\\Documents\\Java\\FirstReview\\src": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\FirstReview\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\RCS\\Documents\\Java\\FirstReview\\src\u0027. Skipped."
+  },
+  "C:\\Program Files (x86)\\Java\\jre7\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\rt.jar",
+    "status": "RESOLVED",
+    "error": "No class path info available for \u0027C:\\Program Files (x86)\\Java\\jre7\\lib\\rt.jar\u0027. Skipped."
+  },
+  "C:\\Users\\RCS\\Documents\\Java\\Project1\\src": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Project1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\RCS\\Documents\\Java\\Project1\\src\u0027. Skipped."
+  },
+  "C:\\Users\\RCS\\Documents\\Java\\Project2\\src": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Project2\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\RCS\\Documents\\Java\\Project2\\src\u0027. Skipped."
+  },
+  "C:\\Users\\RCS\\Documents\\Java\\Project2\\lib\\tree.jar": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Project2\\lib\\tree.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Users\\RCS\\Documents\\Java\\Project2\\lib\\tree.jar\u0027. Neither fingerprint \u0027358011c41ad2efa50584470326e5ce3325d755b3\u0027 nor symbolic name \u0027tree\u0027 are known."
+  },
+  "C:\\Users\\RCS\\Documents\\Java\\Project2-1\\src": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Project2-1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\RCS\\Documents\\Java\\Project2-1\\src\u0027. Skipped."
+  },
+  "C:\\Users\\RCS\\Documents\\Java\\Project2-1\\lib\\tree.jar": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Project2-1\\lib\\tree.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Users\\RCS\\Documents\\Java\\Project2-1\\lib\\tree.jar\u0027. Neither fingerprint \u0027358011c41ad2efa50584470326e5ce3325d755b3\u0027 nor symbolic name \u0027tree\u0027 are known."
+  },
+  "C:\\Users\\RCS\\Documents\\Java\\Project2-2\\lib\\tree.jar": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Project2-2\\lib\\tree.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Users\\RCS\\Documents\\Java\\Project2-2\\lib\\tree.jar\u0027. Neither fingerprint \u0027358011c41ad2efa50584470326e5ce3325d755b3\u0027 nor symbolic name \u0027tree\u0027 are known."
+  },
+  "C:\\Users\\RCS\\Documents\\Java\\Project2-2\\src": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Project2-2\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\RCS\\Documents\\Java\\Project2-2\\src\u0027. Skipped."
+  },
+  "C:\\Users\\RCS\\Documents\\Java\\Project3 Sorting\\src": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Project3 Sorting\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\RCS\\Documents\\Java\\Project3 Sorting\\src\u0027. Skipped."
+  },
+  "C:\\Users\\RCS\\Documents\\Java\\Lab\\graph.zip": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Lab\\graph.zip",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Users\\RCS\\Documents\\Java\\Lab\\graph.zip\u0027. Neither fingerprint \u0027bef37db062c79eb4604104fe046186428b605e44\u0027 nor symbolic name \u0027graph\u0027 are known."
+  },
+  "C:\\Users\\RCS\\Documents\\Java\\331 Project 1\\src": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\331 Project 1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\RCS\\Documents\\Java\\331 Project 1\\src\u0027. Skipped."
+  },
+  "C:\\Users\\RCS\\Documents\\Java\\MyMergeSort\\src": {
+    "location": "C:\\Users\\RCS\\Documents\\Java\\MyMergeSort\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\RCS\\Documents\\Java\\MyMergeSort\\src\u0027. Skipped."
+  }
+}

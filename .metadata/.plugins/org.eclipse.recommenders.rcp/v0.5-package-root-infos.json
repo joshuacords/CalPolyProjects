@@ -1,0 +1,249 @@
+[
+  {
+    "symbolicName": "graph",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "bef37db062c79eb4604104fe046186428b605e44",
+    "jarFileModificationDate": "2013-11-27T10:01:03.006-08:00",
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Lab\\graph.zip",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "a41d5a55a106f2332852e5fbff89df0de4a56534",
+    "jarFileModificationDate": "2014-10-20T09:34:30.332-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\jce.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "88412fa564bae0bbada49a02048123a10f5d3187",
+    "jarFileModificationDate": "2014-10-20T09:34:30.317-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\ext\\dnsns.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "986d72f7ccb7f63ef7fa355b967ee748ffcae133",
+    "jarFileModificationDate": "2014-10-20T09:34:32.891-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\ext\\localedata.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "tree",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "358011c41ad2efa50584470326e5ce3325d755b3",
+    "jarFileModificationDate": "2013-10-16T10:42:15.324-07:00",
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Project2-1\\lib\\tree.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "fa7657e86cb3b8ad57d0c38ccf416e9292083058",
+    "jarFileModificationDate": "2014-10-20T09:34:30.364-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\resources.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "8de892613b2c56391347425e777393a4ff7e6602",
+    "jarFileModificationDate": "2014-10-20T09:34:32.860-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\jsse.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "94490e29841dba8a0e40e2308ab926dffaf58cba",
+    "jarFileModificationDate": "2014-10-20T09:34:30.317-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\ext\\zipfs.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "40a67c09f821af3f62d428e4d79980f9df10e407",
+    "jarFileModificationDate": "2014-10-20T09:34:30.317-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\ext\\sunec.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "tree",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "358011c41ad2efa50584470326e5ce3325d755b3",
+    "jarFileModificationDate": "2013-10-16T10:42:15.324-07:00",
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Project2\\lib\\tree.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "86cfde6dd9b5d1143e57d0237703937157730a33",
+    "jarFileModificationDate": "2014-10-20T09:34:32.470-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\rt.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "80784c699c9dfa009eee88ec2570ddad0770db15",
+    "jarFileModificationDate": "2014-10-20T09:34:30.317-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\ext\\access-bridge-32.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "0a674aa0cc6c8dff3610ab8b5660bdcdc9a2239d",
+    "jarFileModificationDate": "2014-10-20T09:34:32.548-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\charsets.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "tree",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "358011c41ad2efa50584470326e5ce3325d755b3",
+    "jarFileModificationDate": "2013-10-16T10:42:15.324-07:00",
+    "location": "C:\\Users\\RCS\\Documents\\Java\\Project2-2\\lib\\tree.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "3a07a4d2fdd217855de9cf4bc4949431b37c5e9d",
+    "jarFileModificationDate": "2014-10-20T09:34:30.332-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\jfr.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "7f5310659e2b84b60720f9d73aee74834096e4b9",
+    "jarFileModificationDate": "2014-10-20T09:34:30.317-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\ext\\sunjce_provider.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "ff4b31db303f005e77c8d23d921fa540c75ffd01",
+    "jarFileModificationDate": "2014-10-20T09:34:30.317-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\ext\\sunpkcs11.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "90fa2214958f39e6ad4b2fdc410053a269fda1d2",
+    "jarFileModificationDate": "2014-10-20T09:34:30.317-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\ext\\sunmscapi.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "b1eccfbeb76d9f283d1a80b58f10ea0d3014f7c4",
+    "jarFileModificationDate": "2014-10-20T09:34:30.317-07:00",
+    "location": "C:\\Program Files (x86)\\Java\\jre7\\lib\\ext\\jaccess.jar",
+    "javaRuntime": true
+  }
+]
