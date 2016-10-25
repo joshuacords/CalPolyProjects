@@ -1,0 +1,244 @@
+Results for class MisplacedTiles
+Avg nodes for depth 1 = 2	 Avg time (nano) = 85974
+Avg nodes for depth 2 = 5	 Avg time (nano) = 78149
+Avg nodes for depth 4 = 11	 Avg time (nano) = 32878
+Avg nodes for depth 6 = 21	 Avg time (nano) = 25016
+Avg nodes for depth 8 = 44	 Avg time (nano) = 40686
+Avg nodes for depth 10 = 103	 Avg time (nano) = 73810
+Avg nodes for depth 12 = 249	 Avg time (nano) = 153972
+Avg nodes for depth 14 = 610	 Avg time (nano) = 346854
+Avg nodes for depth 16 = 1506	 Avg time (nano) = 621507
+Avg nodes for depth 18 = 3943	 Avg time (nano) = 2011767
+Avg nodes for depth 20 = 9598	 Avg time (nano) = 3767323
+
+Results for class ManhattanDistance
+Avg nodes for depth 1 = 2	 Avg time (nano) = 121981
+Avg nodes for depth 2 = 5	 Avg time (nano) = 56423
+Avg nodes for depth 4 = 11	 Avg time (nano) = 47684
+Avg nodes for depth 6 = 18	 Avg time (nano) = 32303
+Avg nodes for depth 8 = 28	 Avg time (nano) = 28959
+Avg nodes for depth 10 = 49	 Avg time (nano) = 47907
+Avg nodes for depth 12 = 87	 Avg time (nano) = 64078
+Avg nodes for depth 14 = 165	 Avg time (nano) = 123484
+Avg nodes for depth 16 = 327	 Avg time (nano) = 249690
+Avg nodes for depth 18 = 633	 Avg time (nano) = 280201
+Avg nodes for depth 20 = 1176	 Avg time (nano) = 552002
+
+
+Solution length: 12
+204 Nodes generated
+2 4 0 
+1 8 5 
+3 6 7 
+
+2 4 5 
+1 8 0 
+3 6 7 
+
+2 4 5 
+1 0 8 
+3 6 7 
+
+2 0 5 
+1 4 8 
+3 6 7 
+
+0 2 5 
+1 4 8 
+3 6 7 
+
+1 2 5 
+0 4 8 
+3 6 7 
+
+1 2 5 
+3 4 8 
+0 6 7 
+
+1 2 5 
+3 4 8 
+6 0 7 
+
+1 2 5 
+3 4 8 
+6 7 0 
+
+1 2 5 
+3 4 0 
+6 7 8 
+
+1 2 0 
+3 4 5 
+6 7 8 
+
+1 0 2 
+3 4 5 
+6 7 8 
+
+0 1 2 
+3 4 5 
+6 7 8 
+
+Solution length: 16
+295 Nodes generated
+4 2 3 
+1 8 5 
+6 7 0 
+
+4 2 3 
+1 8 0 
+6 7 5 
+
+4 2 0 
+1 8 3 
+6 7 5 
+
+4 0 2 
+1 8 3 
+6 7 5 
+
+0 4 2 
+1 8 3 
+6 7 5 
+
+1 4 2 
+0 8 3 
+6 7 5 
+
+1 4 2 
+6 8 3 
+0 7 5 
+
+1 4 2 
+6 8 3 
+7 0 5 
+
+1 4 2 
+6 0 3 
+7 8 5 
+
+1 4 2 
+6 3 0 
+7 8 5 
+
+1 4 2 
+6 3 5 
+7 8 0 
+
+1 4 2 
+6 3 5 
+7 0 8 
+
+1 4 2 
+6 3 5 
+0 7 8 
+
+1 4 2 
+0 3 5 
+6 7 8 
+
+1 4 2 
+3 0 5 
+6 7 8 
+
+1 0 2 
+3 4 5 
+6 7 8 
+
+0 1 2 
+3 4 5 
+6 7 8 
+
+Solution length: 22
+18790 Nodes generated
+1 2 3 
+4 5 6 
+7 8 0 
+
+1 2 3 
+4 5 6 
+7 0 8 
+
+1 2 3 
+4 0 6 
+7 5 8 
+
+1 2 3 
+4 6 0 
+7 5 8 
+
+1 2 0 
+4 6 3 
+7 5 8 
+
+1 0 2 
+4 6 3 
+7 5 8 
+
+0 1 2 
+4 6 3 
+7 5 8 
+
+4 1 2 
+0 6 3 
+7 5 8 
+
+4 1 2 
+6 0 3 
+7 5 8 
+
+4 1 2 
+6 3 0 
+7 5 8 
+
+4 1 0 
+6 3 2 
+7 5 8 
+
+4 0 1 
+6 3 2 
+7 5 8 
+
+4 3 1 
+6 0 2 
+7 5 8 
+
+4 3 1 
+6 5 2 
+7 0 8 
+
+4 3 1 
+6 5 2 
+0 7 8 
+
+4 3 1 
+0 5 2 
+6 7 8 
+
+0 3 1 
+4 5 2 
+6 7 8 
+
+3 0 1 
+4 5 2 
+6 7 8 
+
+3 1 0 
+4 5 2 
+6 7 8 
+
+3 1 2 
+4 5 0 
+6 7 8 
+
+3 1 2 
+4 0 5 
+6 7 8 
+
+3 1 2 
+0 4 5 
+6 7 8 
+
+0 1 2 
+3 4 5 
+6 7 8 

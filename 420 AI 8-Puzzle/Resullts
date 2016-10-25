@@ -1,0 +1,23 @@
+Misplaced Tiles
+Avg nodes for depth 2 = 5
+Avg nodes for depth 4 = 11
+Avg nodes for depth 6 = 21
+Avg nodes for depth 8 = 44
+Avg nodes for depth 10 = 103
+Avg nodes for depth 12 = 249
+Avg nodes for depth 14 = 610
+Avg nodes for depth 16 = 1506
+Avg nodes for depth 18 = 3943
+Avg nodes for depth 20 = 9598
+
+Manhattan Distance
+Avg nodes for depth 2 = 5
+Avg nodes for depth 4 = 11
+Avg nodes for depth 6 = 18
+Avg nodes for depth 8 = 28
+Avg nodes for depth 10 = 49
+Avg nodes for depth 12 = 87
+Avg nodes for depth 14 = 165
+Avg nodes for depth 16 = 327
+Avg nodes for depth 18 = 633
+Avg nodes for depth 20 = 1176
