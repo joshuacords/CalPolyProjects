@@ -1,3 +1,6 @@
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -17,15 +20,17 @@ public class AdminFrame extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
-	private JList jList;
-	private DefaultListModel DLM;
+	private JList<UserGroupProxy> jList;
+	private DefaultListModel userGroupList;
 	private JLabel userIdLabel;
 	private JLabel groupIdLabel;
+	private UserGroupCont control;
 
 	/**
 	 * Create the application.
 	 */
 	public AdminFrame() {
+		control = UserGroupCont.getInstance();
 		initialize();
 		frame.setVisible(true);
 	}
@@ -47,9 +52,9 @@ public class AdminFrame extends JPanel{
 		groupIdLabel.setBounds(157, 48, 112, 23);
 		frame.getContentPane().add(groupIdLabel);
 
-		DLM = new DefaultListModel();
-		jList = new JList();
-		jList.setModel(DLM);
+		userGroupList = new DefaultListModel<UserGroupProxy>();
+		setTreeView();
+		jList = new JList<UserGroupProxy>(userGroupList);
 		jList.setBounds(10, 11, 137, 240);
 		jList.setLayoutOrientation(JList.VERTICAL);
 		frame.getContentPane().add(jList);
@@ -61,15 +66,33 @@ public class AdminFrame extends JPanel{
 		listSelectionModel.addListSelectionListener(new ListListener());
 
 		JButton addUserButton = new JButton("Add User");
-		addUserButton.setBounds(311, 11, 89, 23);
+		addUserButton.setBounds(311, 11, 113, 23);
 		frame.getContentPane().add(addUserButton);
 
 		JButton addGroupButton = new JButton("Add Group");
-		addGroupButton.setBounds(311, 48, 89, 23);
+		addGroupButton.setBounds(311, 48, 113, 23);
 		frame.getContentPane().add(addGroupButton);
 
 		JButton openUserViewButton = new JButton("Open User View");
 		openUserViewButton.setBounds(157, 82, 143, 23);
+		openUserViewButton.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			UserGroupProxy proxy = jList.getSelectedValue();
+			if(proxy.isUser()){
+				EventQueue.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							UserMenu userMenu = new UserMenu(proxy.getId());
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		}
+		});
 		frame.getContentPane().add(openUserViewButton);
 
 		JButton showUserTotalButton = new JButton("Show User Total");
@@ -120,10 +143,11 @@ public class AdminFrame extends JPanel{
 
 	}
 
-	public void setTreeView(List<UserGroupProxy> displayProxies) {
-		DLM.removeAllElements();
+	public void setTreeView() {
+		List<UserGroupProxy> displayProxies = control.getTreeProxies();
+		userGroupList.removeAllElements();
 		for(UserGroupProxy element : displayProxies){
-			DLM.addElement(element);
+			userGroupList.addElement(element);
 		}
 	}
 
@@ -136,7 +160,7 @@ public class AdminFrame extends JPanel{
 	        	System.out.println(" <none>");
 	        } else {
 	            int selectedIndex = e.getFirstIndex();
-				UserGroupProxy proxy = (UserGroupProxy) DLM.get(selectedIndex);
+				UserGroupProxy proxy = (UserGroupProxy) userGroupList.get(selectedIndex);
 				if(proxy.isUser()){
 					userIdLabel.setText("User Id: " + proxy.getId());
 					groupIdLabel.setText("Group Id: -");

@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class User extends Subject implements Subscriber, IGroup{
+public class User extends Subject implements Subscriber, IGroup {
 	private int _userId;
 	private int _groupId;
 	private int _messageId;
@@ -9,8 +9,11 @@ public class User extends Subject implements Subscriber, IGroup{
 	private LinkedList<Message> _userMessages;
 	private LinkedList<Message> _newsFeed;
 	private List<Integer> _subscribedTo;
+	private UserMenu _userMenu;
+	private UserGroupCont _control;
 
-	public User(int userId, int groupId, String userName){
+	public User(int userId, int groupId, String userName) {
+		_control = UserGroupCont.getInstance();
 		_userId = userId;
 		setGroupId(groupId);
 		setUserName(userName);
@@ -21,24 +24,35 @@ public class User extends Subject implements Subscriber, IGroup{
 		_subscribedTo = new LinkedList<Integer>();
 	}
 
-	public void createMessage(String messageBody){
+	public void createMessage(String messageBody) {
 		Message message = new Message(_userId, _messageId++, messageBody);
 		_userMessages.addFirst(message);
 		_newsFeed.addFirst(message);
 		notifySubscribers();
 	}
 
-	public void subscribeTo(int subjectId){
-		UserGroupCont.getInstance().getUser(subjectId).addSubscriber(_userId);
-		_subscribedTo.add(subjectId);
+	public void subscribeTo(int subjectId) {
+		User user = _control.getUser(subjectId);
+		if(user != null){
+			user.addSubscriber(_userId);
+			_subscribedTo.add(subjectId);
+		}
 	}
 
-	public LinkedList<Message> getAllMessages(){
+	public LinkedList<Message> getAllMessages() {
 		return _userMessages;
 	}
 
-	public List<Message> getNewsFeed(){
+	public List<Message> getNewsFeedList() {
 		return _newsFeed;
+	}
+
+	public String getNewsFeedString() {
+		StringBuilder sb = new StringBuilder();
+		for (Message message : _newsFeed) {
+			sb.append(message + "\n");
+		}
+		return sb.toString();
 	}
 
 	public int getGroupId() {
@@ -61,48 +75,52 @@ public class User extends Subject implements Subscriber, IGroup{
 		this._userName = _userName;
 	}
 
-	//not sure I like this approach
-	public Message getLastMessage(){
+	// not sure I like this approach
+	public Message getLastMessage() {
 		return null;
 	}
 
 	@Override
 	public void notify(Subject subject) {
-		if(subject.getClass() == User.class){
+		if (subject.getClass() == User.class) {
 
-			LinkedList<Message> messages = ((User)subject).getAllMessages();
+			LinkedList<Message> messages = ((User) subject).getAllMessages();
 
-			if(!messages.isEmpty()){
+			if (!messages.isEmpty()) {
 
-				if(!_newsFeed.isEmpty()){
+				if (!_newsFeed.isEmpty()) {
 					int index = 0;
 
-					//find how many new messages exist
-					while(messages.get(index).compareTo(_newsFeed.getFirst()) > 0){
+					// find how many new messages exist
+					while (messages.size() > index &&
+							(messages.get(index).compareTo(_newsFeed.getFirst()) > 0)) {
 						index++;
 					}
 
-					//remove index that failed
+					// remove index that failed
 					index--;
 
-					//add them to _newsFeed
-					for(; index >= 0; index--){
+					// add them to _newsFeed
+					for (; index >= 0; index--) {
 						_newsFeed.addFirst(messages.get(index));
 					}
 				} else {
-					for(Message message : messages){
+					for (Message message : messages) {
 						_newsFeed.add(message);
 					}
+				}
+
+				if (_userMenu != null) {
+					_userMenu.updateNewsFeed();
 				}
 
 			}
 		}
 
-
-		System.out.println("Notify for " + _userName + " triggered:");
-		for(Message message : _newsFeed){
-			System.out.println(message);
-		}
+		// System.out.println("Notify for " + _userName + " triggered:");
+		// for(Message message : _newsFeed){
+		// System.out.println(message);
+		// }
 	}
 
 	@Override
@@ -116,6 +134,23 @@ public class User extends Subject implements Subscriber, IGroup{
 			int level) {
 		display.add(new UserGroupProxy(_userId, _userName, true, level));
 		return display;
+	}
+
+	public void attachMenu(UserMenu userMenu) {
+		_userMenu = userMenu;
+	}
+
+	public void detachMenu() {
+		_userMenu = null;
+	}
+
+	public List<UserGroupProxy> getSubscribedTo() {
+		List<UserGroupProxy> subscribedTo = new LinkedList<UserGroupProxy>();
+		for (int userId : _subscribedTo) {
+			subscribedTo.add(new UserGroupProxy(userId,
+					_control.getUser(userId).getUserName(), true, 0));
+		}
+		return subscribedTo;
 	}
 
 }

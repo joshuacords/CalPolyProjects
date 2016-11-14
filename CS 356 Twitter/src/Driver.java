@@ -12,8 +12,10 @@ public class Driver {
 		int userGroup2 = control.addGroup(userGroup1, "Group 2");
 		User user1 = control.getUser(user1Id);
 
-		int user2Id = control.addUser(userGroup1, "Austin");
+		int austinId = control.addUser(userGroup1, "Austin");
 		int user3Id = control.addUser(userGroup1, "Allison");
+		User allison = control.getUser(user3Id);
+
 		int user4Id = control.addUser(userGroup2, "Loni");
 		int user5Id = control.addUser(rootId, "Lisa");
 
@@ -27,9 +29,10 @@ public class Driver {
 		user1.createMessage("2nd Message");
 		user1.createMessage("3rd message");
 
-		user1.addSubscriber(user2Id);
+		//user1.addSubscriber(user3Id);
+		allison.subscribeTo(user1Id);
 
-
+		user1.createMessage("4th message");
 
 		//control.printTreeView();
 
@@ -41,13 +44,22 @@ public class Driver {
 			public void run() {
 				try {
 					AdminFrame window = new AdminFrame();
-					//window.setTreeView(displayList);
-					window.setTreeView(displayProxies);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+
+//		EventQueue.invokeLater(new Runnable() {
+//			@Override
+//			public void run() {
+//				try {
+//					UserMenu userMenu = new UserMenu(1);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 	}
 
 }

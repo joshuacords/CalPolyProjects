@@ -18,6 +18,14 @@ public class UserGroupCont {
 		return _lastGroupId++;
 	}
 
+	public void attachMenuToUser(int userId, UserMenu userMenu){
+		_userList.get(userId).attachMenu(userMenu);
+	}
+
+	public void detachMenuFromUser(int userId) {
+		_userList.get(userId).detachMenu();
+	}
+
 	public void printTreeView(){
 		System.out.println(_root.displayString(new StringBuilder(), 0));
 	}
@@ -68,4 +76,5 @@ public class UserGroupCont {
 	private int _lastUserId;
 	private int _lastGroupId;
 	private static UserGroupCont _instance;
+
 }

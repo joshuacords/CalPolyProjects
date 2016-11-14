@@ -30,8 +30,8 @@ public class Message implements Comparable<Message>{
 
 	@Override
 	public String toString(){
-		return UserGroupCont.getInstance().getUser(_userId).getUserName() + " - id:" +
-				_messageId + "| " + _message;
+		return UserGroupCont.getInstance().getUser(_userId).getUserName()
+				+ " - " + _message;
 	}
 
 	private void setUserId(int _userId) {
