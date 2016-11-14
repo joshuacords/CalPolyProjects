@@ -54,6 +54,26 @@ public class UserGroupCont {
 		return _groupList.get(groupId);
 	}
 
+	public TotalsVisitor visitGroup(int groupId){
+		TotalsVisitor visitor = new TotalsVisitor();
+		Group group = _groupList.get(groupId);
+		if(group != null){
+			group.accept(visitor);
+		}
+
+		return visitor;
+	}
+
+	public TotalsVisitor visitUser(int userId){
+		TotalsVisitor visitor = new TotalsVisitor();
+		User user = _userList.get(userId);
+		if(user != null){
+			user.accept(visitor);
+		}
+
+		return visitor;
+	}
+
 	public static UserGroupCont getInstance(){
 		if(_instance == null){
 			_instance = new UserGroupCont();

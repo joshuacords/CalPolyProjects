@@ -1,4 +1,4 @@
 
-public interface Subscriber {
+public interface ISubscriber {
 	public void notify(Subject subject);
 }

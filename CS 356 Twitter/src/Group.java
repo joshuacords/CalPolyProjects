@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class Group implements IGroup {
+public class Group implements IGroup, IVisitable {
 
 	public Group(int groupId, String groupName){
 		_groupId = groupId;
@@ -27,6 +27,9 @@ public class Group implements IGroup {
 		return display;
 	}
 
+	public List<IGroup> getSubGroups(){
+		return _subGroups;
+	}
 	@Override
 	public List<UserGroupProxy> displayProxy(List<UserGroupProxy> display,
 			int level) {
@@ -64,9 +67,14 @@ public class Group implements IGroup {
 		return _groupId;
 	}
 
+	@Override
+	public void accept(IVisitor visitor) {
+		visitor.visit(this);
+	}
 
 	private int _groupId;
 	private String _groupName;
 	private List<IGroup> _subGroups;
+
 
 }

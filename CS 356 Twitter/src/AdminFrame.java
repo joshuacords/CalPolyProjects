@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
@@ -154,51 +155,90 @@ public class AdminFrame extends JPanel{
 
 		JButton showUserTotalButton = new JButton("Show User Total");
 		showUserTotalButton.setBounds(141, 116, 168, 23);
+		showUserTotalButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UserGroupProxy proxy = treeView.getSelectedValue();
+				int groupId = 0;
+
+				if(proxy != null){
+					if(proxy.isUser()){
+						groupId = control.getUser(proxy.getId()).getGroupId();
+					} else {
+						groupId = proxy.getId();
+					}
+				}
+				TotalsVisitor visitor = control.visitGroup(groupId);
+				JOptionPane.showMessageDialog(frame,
+					    visitor.getUserTotal() + " users in " + control.getGroup(groupId).getGroupName());
+			}
+		});
 		frame.getContentPane().add(showUserTotalButton);
 
 		JButton showGroupTotalButton = new JButton("Show Group Total");
 		showGroupTotalButton.setBounds(141, 150, 168, 23);
+		showGroupTotalButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UserGroupProxy proxy = treeView.getSelectedValue();
+				int groupId = 0;
+
+				if(proxy != null){
+					if(proxy.isUser()){
+						groupId = control.getUser(proxy.getId()).getGroupId();
+					} else {
+						groupId = proxy.getId();
+					}
+				}
+				TotalsVisitor visitor = control.visitGroup(groupId);
+				JOptionPane.showMessageDialog(frame,
+					    visitor.getGroupTotal() + " groups in " + control.getGroup(groupId).getGroupName());
+			}
+		});
 		frame.getContentPane().add(showGroupTotalButton);
 
 		JButton showMessagesTotalButton = new JButton("Show Messages Total");
 		showMessagesTotalButton.setBounds(141, 185, 168, 23);
+		showMessagesTotalButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UserGroupProxy proxy = treeView.getSelectedValue();
+				int userId = 0;
+
+				if(proxy != null){
+					if(proxy.isUser()){
+						userId = proxy.getId();
+					}
+				}
+				TotalsVisitor visitor = control.visitUser(userId);
+				JOptionPane.showMessageDialog(frame,
+						control.getUser(userId).getUserName() + " has posted "
+						+ visitor.getMessageTotal() + " messages.");
+			}
+		});
 		frame.getContentPane().add(showMessagesTotalButton);
 
 		JButton showPositivePercentButton = new JButton("Show Positive Percent");
 		showPositivePercentButton.setBounds(141, 219, 168, 23);
+		showPositivePercentButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UserGroupProxy proxy = treeView.getSelectedValue();
+				int userId = 0;
+
+				if(proxy != null){
+					if(proxy.isUser()){
+						userId = proxy.getId();
+					}
+				}
+				TotalsVisitor visitor = control.visitUser(userId);
+				JOptionPane.showMessageDialog(frame,
+						control.getUser(userId).getUserName() + " has "
+						+ visitor.getPositiveMessagePercent() + "% positive messages.");
+			}
+		});
 		frame.getContentPane().add(showPositivePercentButton);
 
-
-
-//		JButton btnLoadList = new JButton("Load List");
-//		btnLoadList.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				DLM.addElement("4");
-//				DLM.addElement("5");
-//				DLM.addElement("6");
-//			}
-//		});
-//		btnLoadList.setBounds(321, 82, 89, 23);
-//		frame.getContentPane().add(btnLoadList);
-
-//		JButton btnNewButton = new JButton("Show Message");
-//		btnNewButton.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent arg0) {
-//				int selectedIndex = jList.getSelectedIndex();
-//				UserGroupProxy proxy = (UserGroupProxy) DLM.get(selectedIndex);
-//				if(proxy.isUser()){
-//					userIdLabel.setText("User Id: " + proxy.getId());
-//					groupIdLabel.setText("Group Id: -");
-//				} else {
-//					userIdLabel.setText("User Id: -");
-//					groupIdLabel.setText("Group Id: " + proxy.getId());
-//				}
-//			}
-//		});
-//		btnNewButton.setBounds(321, 116, 121, 23);
-//		frame.getContentPane().add(btnNewButton);
 
 	}
 

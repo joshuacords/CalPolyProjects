@@ -8,8 +8,8 @@ public class Message implements Comparable<Message>{
 		_publishTime = System.currentTimeMillis();
 	}
 
-	public String getMessage() {
-		return _message;
+	public String getMessageBody() {
+		return _body;
 	}
 
 	public int getMessageId() {
@@ -17,7 +17,7 @@ public class Message implements Comparable<Message>{
 	}
 
 	public void setMessage(String _message) {
-		this._message = _message;
+		this._body = _message;
 	}
 
 	public int getUserId() {
@@ -31,7 +31,7 @@ public class Message implements Comparable<Message>{
 	@Override
 	public String toString(){
 		return UserGroupCont.getInstance().getUser(_userId).getUserName()
-				+ " - " + _message;
+				+ " - " + _body;
 	}
 
 	private void setUserId(int _userId) {
@@ -40,7 +40,7 @@ public class Message implements Comparable<Message>{
 
 	private int _userId;
 	private int _messageId;
-	private String _message;
+	private String _body;
 	private long _publishTime;
 
 	@Override

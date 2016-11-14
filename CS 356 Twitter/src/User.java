@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class User extends Subject implements Subscriber, IGroup {
+public class User extends Subject implements ISubscriber, IGroup, IVisitable {
 	private int _userId;
 	private int _groupId;
 	private int _messageId;
@@ -153,4 +153,8 @@ public class User extends Subject implements Subscriber, IGroup {
 		return subscribedTo;
 	}
 
+	@Override
+	public void accept(IVisitor visitor) {
+		visitor.visit(this);
+	}
 }
