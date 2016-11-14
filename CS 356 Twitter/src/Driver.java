@@ -1,10 +1,24 @@
 import java.awt.EventQueue;
-import java.util.List;
 
 public class Driver {
 
 	public static void main(String[] args) {
 
+		createSampleData();
+
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					AdminFrame window = new AdminFrame();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	private static void createSampleData(){
 		UserGroupCont control = UserGroupCont.getInstance();
 		int rootId = 0;
 		int user1Id = control.addUser(rootId, "Josh");
@@ -19,47 +33,11 @@ public class Driver {
 		int user4Id = control.addUser(userGroup2, "Loni");
 		int user5Id = control.addUser(rootId, "Lisa");
 
-		for(int i = 1; i < 8; i++)
-		{
-			//control.addUser(rootId, "User" + i);
-		}
-		//User user2 = control.getUser(user2Id);
-
-		user1.createMessage("First message");
-		user1.createMessage("2nd Message");
-		user1.createMessage("3rd message");
-
-		//user1.addSubscriber(user3Id);
 		allison.subscribeTo(user1Id);
 
-		user1.createMessage("4th message");
-
-		//control.printTreeView();
-
-		//List<String> displayList = control.getTreeView();
-		List<UserGroupProxy> displayProxies = control.getTreeProxies();
-
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					AdminFrame window = new AdminFrame();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-
-//		EventQueue.invokeLater(new Runnable() {
-//			@Override
-//			public void run() {
-//				try {
-//					UserMenu userMenu = new UserMenu(1);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
+		user1.createMessage("First message: great!");
+		user1.createMessage("2nd Message: good");
+		user1.createMessage("3rd message: ok");
 	}
 
 }

@@ -8,28 +8,16 @@ public class Group implements IGroup, IVisitable {
 		_groupName = groupName;
 		_subGroups = new LinkedList<IGroup>();
 	}
+
 	@Override
-	public StringBuilder displayString(StringBuilder display, int level) {
-
-		display.append(_groupName + "\n");
-
-		if(!_subGroups.isEmpty()){
-			level++;
-			for(IGroup group : _subGroups){
-
-				display = addBuffer(display, level);
-				group.displayString(display, level);
-
-			}
-			level--;
-		}
-
-		return display;
+	public void accept(IVisitor visitor) {
+		visitor.visit(this);
 	}
 
-	public List<IGroup> getSubGroups(){
-		return _subGroups;
+	public void addSubgroup(IGroup group){
+		_subGroups.add(group);
 	}
+
 	@Override
 	public List<UserGroupProxy> displayProxy(List<UserGroupProxy> display,
 			int level) {
@@ -47,34 +35,20 @@ public class Group implements IGroup, IVisitable {
 		return display;
 	}
 
-	private StringBuilder addBuffer(StringBuilder display, int level){
-		for(int i = 0; i < level; i++){
-			display.append("  ");
-		}
-
-		return display;
+	public int getGroupId(){
+		return _groupId;
 	}
 
 	public String getGroupName(){
 		return _groupName;
 	}
 
-	public void addSubgroup(IGroup group){
-		_subGroups.add(group);
-	}
-
-	public int getGroupId(){
-		return _groupId;
-	}
-
-	@Override
-	public void accept(IVisitor visitor) {
-		visitor.visit(this);
+	public List<IGroup> getSubGroups(){
+		return _subGroups;
 	}
 
 	private int _groupId;
 	private String _groupName;
 	private List<IGroup> _subGroups;
-
 
 }

@@ -19,19 +19,6 @@ import javax.swing.event.ListSelectionListener;
 public class AdminFrame extends JPanel{
 
 	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
-	private JFrame frame;
-	private JList<UserGroupProxy> treeView;
-	private DefaultListModel userGroupList;
-	private JLabel userIdLabel;
-	private JLabel groupIdLabel;
-	private UserGroupCont control;
-	private JTextField newUserTextField;
-	private JTextField newGroupTextField;
-
-	/**
 	 * Create the application.
 	 */
 	public AdminFrame() {
@@ -257,7 +244,7 @@ public class AdminFrame extends JPanel{
 
 	        if (!lsm.isSelectionEmpty()){
 	            int selectedIndex = e.getFirstIndex();
-				UserGroupProxy proxy = (UserGroupProxy) userGroupList.get(selectedIndex);
+				UserGroupProxy proxy = userGroupList.get(selectedIndex);
 				if(proxy.isUser()){
 					userIdLabel.setText("User Id: " + proxy.getId());
 					groupIdLabel.setText("Group Id: -");
@@ -268,4 +255,14 @@ public class AdminFrame extends JPanel{
 	        }
 	    }
 	}
+
+	private UserGroupCont control;
+	private JFrame frame;
+	private JLabel groupIdLabel;
+	private JTextField newGroupTextField;
+	private JTextField newUserTextField;
+	private static final long serialVersionUID = 1L;
+	private JList<UserGroupProxy> treeView;
+	private DefaultListModel<UserGroupProxy> userGroupList;
+	private JLabel userIdLabel;
 }

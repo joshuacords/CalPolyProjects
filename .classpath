@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="301 Project 1 Bisection-Newton/src"/>
+	<classpathentry kind="src" path="301 Project 2 Birthday/src"/>
+	<classpathentry kind="src" path="331 Project 1/src"/>
+	<classpathentry kind="src" path="331 Project 2 Graphs - Prims Kruskle/src"/>
+	<classpathentry kind="src" path="331 Project 3 - A-Star vs Dijkstra&apos;s/src"/>
+	<classpathentry kind="src" path="420 AI 8-Puzzle/joshuacords_420p1"/>
+	<classpathentry kind="src" path="420 AI 8-Puzzle/src"/>
+	<classpathentry kind="src" path="Copy of Project3 Sorting/src"/>
+	<classpathentry excluding="src/" kind="src" path="CS 311 Project 1"/>
+	<classpathentry kind="src" path="CS 311 Project 1/src"/>
+	<classpathentry kind="src" path="CS 356 Twitter/src"/>
+	<classpathentry kind="src" path="CS 420 n-Queens/joshuacords_420p2/src"/>
+	<classpathentry kind="src" path="CS 420 n-Queens/src"/>
+	<classpathentry kind="src" path="CS356-iVote-Project1/src"/>
+	<classpathentry kind="src" path="FirstReview/src"/>
+	<classpathentry kind="src" path="Fun/src"/>
+	<classpathentry kind="src" path="Jesse/src"/>
+	<classpathentry kind="src" path="Lab/src"/>
+	<classpathentry kind="src" path="MagicTheGathering/src"/>
+	<classpathentry kind="src" path="MyMergeSort/src"/>
+	<classpathentry kind="src" path="Project1/src"/>
+	<classpathentry kind="src" path="Project2-1/src"/>
+	<classpathentry kind="src" path="Project2-2/src"/>
+	<classpathentry kind="src" path="Project2/src"/>
+	<classpathentry kind="src" path="Project3 Sorting/src"/>
+	<classpathentry kind="src" path="TechTest/src"/>
+	<classpathentry kind="src" path="TestGraph/src"/>
+	<classpathentry kind="src" path="TreeMap/src"/>
+	<classpathentry kind="lib" path="Project2-1/lib/tree.jar"/>
+	<classpathentry kind="lib" path="Project2-2/lib/tree.jar"/>
+	<classpathentry kind="lib" path="Project2/lib/tree.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="301 Project 1 Bisection-Newton/bin"/>
+</classpath>

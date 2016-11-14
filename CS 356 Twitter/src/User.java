@@ -2,16 +2,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class User extends Subject implements ISubscriber, IGroup, IVisitable {
-	private int _userId;
-	private int _groupId;
-	private int _messageId;
-	private String _userName;
-	private LinkedList<Message> _userMessages;
-	private LinkedList<Message> _newsFeed;
-	private List<Integer> _subscribedTo;
-	private UserMenu _userMenu;
-	private UserGroupCont _control;
-
 	public User(int userId, int groupId, String userName) {
 		_control = UserGroupCont.getInstance();
 		_userId = userId;
@@ -24,6 +14,15 @@ public class User extends Subject implements ISubscriber, IGroup, IVisitable {
 		_subscribedTo = new LinkedList<Integer>();
 	}
 
+	@Override
+	public void accept(IVisitor visitor) {
+		visitor.visit(this);
+	}
+
+	public void attachMenu(UserMenu userMenu) {
+		_userMenu = userMenu;
+	}
+
 	public void createMessage(String messageBody) {
 		Message message = new Message(_userId, _messageId++, messageBody);
 		_userMessages.addFirst(message);
@@ -31,16 +30,23 @@ public class User extends Subject implements ISubscriber, IGroup, IVisitable {
 		notifySubscribers();
 	}
 
-	public void subscribeTo(int subjectId) {
-		User user = _control.getUser(subjectId);
-		if(user != null){
-			user.addSubscriber(_userId);
-			_subscribedTo.add(subjectId);
-		}
+	public void detachMenu() {
+		_userMenu = null;
+	}
+
+	@Override
+	public List<UserGroupProxy> displayProxy(List<UserGroupProxy> display,
+			int level) {
+		display.add(new UserGroupProxy(_userId, _userName, true, level));
+		return display;
 	}
 
 	public LinkedList<Message> getAllMessages() {
 		return _userMessages;
+	}
+
+	public int getGroupId() {
+		return _groupId;
 	}
 
 	public List<Message> getNewsFeedList() {
@@ -55,29 +61,21 @@ public class User extends Subject implements ISubscriber, IGroup, IVisitable {
 		return sb.toString();
 	}
 
-	public int getGroupId() {
-		return _groupId;
+	public List<UserGroupProxy> getSubscribedTo() {
+		List<UserGroupProxy> subscribedTo = new LinkedList<UserGroupProxy>();
+		for (int userId : _subscribedTo) {
+			subscribedTo.add(new UserGroupProxy(userId,
+					_control.getUser(userId).getUserName(), true, 0));
+		}
+		return subscribedTo;
 	}
 
 	public int getUserId() {
 		return _userId;
 	}
 
-	public void setGroupId(int _groupId) {
-		this._groupId = _groupId;
-	}
-
 	public String getUserName() {
 		return _userName;
-	}
-
-	public void setUserName(String _userName) {
-		this._userName = _userName;
-	}
-
-	// not sure I like this approach
-	public Message getLastMessage() {
-		return null;
 	}
 
 	@Override
@@ -113,48 +111,33 @@ public class User extends Subject implements ISubscriber, IGroup, IVisitable {
 				if (_userMenu != null) {
 					_userMenu.updateNewsFeed();
 				}
-
 			}
 		}
-
-		// System.out.println("Notify for " + _userName + " triggered:");
-		// for(Message message : _newsFeed){
-		// System.out.println(message);
-		// }
 	}
 
-	@Override
-	public StringBuilder displayString(StringBuilder display, int level) {
-		display.append(_userName + "\n");
-		return display;
+	public void setGroupId(int _groupId) {
+		this._groupId = _groupId;
 	}
 
-	@Override
-	public List<UserGroupProxy> displayProxy(List<UserGroupProxy> display,
-			int level) {
-		display.add(new UserGroupProxy(_userId, _userName, true, level));
-		return display;
+	public void setUserName(String _userName) {
+		this._userName = _userName;
 	}
 
-	public void attachMenu(UserMenu userMenu) {
-		_userMenu = userMenu;
-	}
-
-	public void detachMenu() {
-		_userMenu = null;
-	}
-
-	public List<UserGroupProxy> getSubscribedTo() {
-		List<UserGroupProxy> subscribedTo = new LinkedList<UserGroupProxy>();
-		for (int userId : _subscribedTo) {
-			subscribedTo.add(new UserGroupProxy(userId,
-					_control.getUser(userId).getUserName(), true, 0));
+	public void subscribeTo(int subjectId) {
+		User user = _control.getUser(subjectId);
+		if(user != null){
+			user.addSubscriber(_userId);
+			_subscribedTo.add(subjectId);
 		}
-		return subscribedTo;
 	}
 
-	@Override
-	public void accept(IVisitor visitor) {
-		visitor.visit(this);
-	}
+	private UserGroupCont _control;
+	private int _groupId;
+	private int _messageId;
+	private LinkedList<Message> _newsFeed;
+	private List<Integer> _subscribedTo;
+	private int _userId;
+	private UserMenu _userMenu;
+	private LinkedList<Message> _userMessages;
+	private String _userName;
 }

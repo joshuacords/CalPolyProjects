@@ -8,41 +8,6 @@ public class Message implements Comparable<Message>{
 		_publishTime = System.currentTimeMillis();
 	}
 
-	public String getMessageBody() {
-		return _body;
-	}
-
-	public int getMessageId() {
-		return _messageId;
-	}
-
-	public void setMessage(String _message) {
-		this._body = _message;
-	}
-
-	public int getUserId() {
-		return _userId;
-	}
-
-	public long getPublishTime(){
-		return _publishTime;
-	}
-
-	@Override
-	public String toString(){
-		return UserGroupCont.getInstance().getUser(_userId).getUserName()
-				+ " - " + _body;
-	}
-
-	private void setUserId(int _userId) {
-		this._userId = _userId;
-	}
-
-	private int _userId;
-	private int _messageId;
-	private String _body;
-	private long _publishTime;
-
 	@Override
 	public int compareTo(Message message) {
 
@@ -55,7 +20,39 @@ public class Message implements Comparable<Message>{
 		}
 	}
 
+	public String getMessageBody() {
+		return _body;
+	}
 
+	public int getMessageId() {
+		return _messageId;
+	}
 
+	public long getPublishTime(){
+		return _publishTime;
+	}
+
+	public int getUserId() {
+		return _userId;
+	}
+
+	public void setMessage(String _message) {
+		this._body = _message;
+	}
+
+	@Override
+	public String toString(){
+		return UserGroupCont.getInstance().getUser(_userId).getUserName()
+				+ " - " + _body;
+	}
+
+	private void setUserId(int _userId) {
+		this._userId = _userId;
+	}
+
+	private String _body;
+	private int _messageId;
+	private long _publishTime;
+	private int _userId;
 
 }
