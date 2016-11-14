@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -20,11 +22,13 @@ public class AdminFrame extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
-	private JList<UserGroupProxy> jList;
+	private JList<UserGroupProxy> treeView;
 	private DefaultListModel userGroupList;
 	private JLabel userIdLabel;
 	private JLabel groupIdLabel;
 	private UserGroupCont control;
+	private JTextField newUserTextField;
+	private JTextField newGroupTextField;
 
 	/**
 	 * Create the application.
@@ -45,40 +49,93 @@ public class AdminFrame extends JPanel{
 		frame.getContentPane().setLayout(null);
 
 		userIdLabel = new JLabel("User Id: ");
-		userIdLabel.setBounds(157, 11, 112, 23);
+		userIdLabel.setBounds(141, 11, 112, 23);
 		frame.getContentPane().add(userIdLabel);
 
 		groupIdLabel = new JLabel("Group Id: ");
-		groupIdLabel.setBounds(157, 48, 112, 23);
+		groupIdLabel.setBounds(141, 48, 112, 23);
 		frame.getContentPane().add(groupIdLabel);
 
 		userGroupList = new DefaultListModel<UserGroupProxy>();
-		setTreeView();
-		jList = new JList<UserGroupProxy>(userGroupList);
-		jList.setBounds(10, 11, 137, 240);
-		jList.setLayoutOrientation(JList.VERTICAL);
-		frame.getContentPane().add(jList);
+		updateTreeView();
+		ListCellRenderer renderer = new MyCellRenderer();
+
+		treeView = new JList<UserGroupProxy>(userGroupList);
+		treeView.setBounds(10, 11, 121, 240);
+		treeView.setLayoutOrientation(JList.VERTICAL);
+		treeView.setCellRenderer(renderer);
+		frame.getContentPane().add(treeView);
 
 //		JScrollPane pane = new JScrollPane(jList);
 //		add(pane, BorderLayout.NORTH);
 
-		ListSelectionModel listSelectionModel = jList.getSelectionModel();
+		ListSelectionModel listSelectionModel = treeView.getSelectionModel();
 		listSelectionModel.addListSelectionListener(new ListListener());
 
+		newUserTextField = new JTextField();
+		newUserTextField.setBounds(319, 83, 105, 20);
+		frame.getContentPane().add(newUserTextField);
+		newUserTextField.setColumns(10);
+
+		newGroupTextField = new JTextField();
+		newGroupTextField.setColumns(10);
+		newGroupTextField.setBounds(319, 151, 105, 20);
+		frame.getContentPane().add(newGroupTextField);
+
 		JButton addUserButton = new JButton("Add User");
-		addUserButton.setBounds(311, 11, 113, 23);
+		addUserButton.setBounds(319, 117, 105, 23);
+		addUserButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String userName = newUserTextField.getText();
+				UserGroupProxy proxy = treeView.getSelectedValue();
+				int groupId = 0;
+
+				if(proxy != null){
+					if(proxy.isUser()){
+						groupId = control.getUser(proxy.getId()).getGroupId();
+					} else {
+						groupId = proxy.getId();
+					}
+				}
+
+				newUserTextField.setText("");
+				control.addUser(groupId, userName);
+				updateTreeView();
+			}
+		});
 		frame.getContentPane().add(addUserButton);
 
 		JButton addGroupButton = new JButton("Add Group");
-		addGroupButton.setBounds(311, 48, 113, 23);
+		addGroupButton.setBounds(319, 185, 105, 23);
+		addGroupButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String groupName = newGroupTextField.getText();
+				UserGroupProxy proxy = treeView.getSelectedValue();
+				int groupId = 0;
+
+				if(proxy != null){
+					if(proxy.isUser()){
+						groupId = control.getUser(proxy.getId()).getGroupId();
+					} else {
+						groupId = proxy.getId();
+					}
+				}
+
+				newGroupTextField.setText("");
+				control.addGroup(groupId, groupName);
+				updateTreeView();
+			}
+		});
 		frame.getContentPane().add(addGroupButton);
 
 		JButton openUserViewButton = new JButton("Open User View");
-		openUserViewButton.setBounds(157, 82, 143, 23);
+		openUserViewButton.setBounds(141, 82, 168, 23);
 		openUserViewButton.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			UserGroupProxy proxy = jList.getSelectedValue();
+			UserGroupProxy proxy = treeView.getSelectedValue();
 			if(proxy.isUser()){
 				EventQueue.invokeLater(new Runnable() {
 					@Override
@@ -96,20 +153,22 @@ public class AdminFrame extends JPanel{
 		frame.getContentPane().add(openUserViewButton);
 
 		JButton showUserTotalButton = new JButton("Show User Total");
-		showUserTotalButton.setBounds(157, 116, 143, 23);
+		showUserTotalButton.setBounds(141, 116, 168, 23);
 		frame.getContentPane().add(showUserTotalButton);
 
 		JButton showGroupTotalButton = new JButton("Show Group Total");
-		showGroupTotalButton.setBounds(157, 150, 143, 23);
+		showGroupTotalButton.setBounds(141, 150, 168, 23);
 		frame.getContentPane().add(showGroupTotalButton);
 
 		JButton showMessagesTotalButton = new JButton("Show Messages Total");
-		showMessagesTotalButton.setBounds(157, 185, 143, 23);
+		showMessagesTotalButton.setBounds(141, 185, 168, 23);
 		frame.getContentPane().add(showMessagesTotalButton);
 
 		JButton showPositivePercentButton = new JButton("Show Positive Percent");
-		showPositivePercentButton.setBounds(157, 219, 143, 23);
+		showPositivePercentButton.setBounds(141, 219, 168, 23);
 		frame.getContentPane().add(showPositivePercentButton);
+
+
 
 //		JButton btnLoadList = new JButton("Load List");
 //		btnLoadList.addActionListener(new ActionListener() {
@@ -143,7 +202,7 @@ public class AdminFrame extends JPanel{
 
 	}
 
-	public void setTreeView() {
+	public void updateTreeView() {
 		List<UserGroupProxy> displayProxies = control.getTreeProxies();
 		userGroupList.removeAllElements();
 		for(UserGroupProxy element : displayProxies){
@@ -156,9 +215,7 @@ public class AdminFrame extends JPanel{
 		public void valueChanged(ListSelectionEvent e) {
 	        ListSelectionModel lsm = (ListSelectionModel)e.getSource();
 
-	        if (lsm.isSelectionEmpty()) {
-	        	System.out.println(" <none>");
-	        } else {
+	        if (!lsm.isSelectionEmpty()){
 	            int selectedIndex = e.getFirstIndex();
 				UserGroupProxy proxy = (UserGroupProxy) userGroupList.get(selectedIndex);
 				if(proxy.isUser()){
