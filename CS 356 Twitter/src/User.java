@@ -111,4 +111,11 @@ public class User extends Subject implements Subscriber, IGroup{
 		return display;
 	}
 
+	@Override
+	public List<UserGroupProxy> displayProxy(List<UserGroupProxy> display,
+			int level) {
+		display.add(new UserGroupProxy(_userId, _userName, true, level));
+		return display;
+	}
+
 }

@@ -1,3 +1,6 @@
+import java.awt.EventQueue;
+import java.util.List;
+
 public class Driver {
 
 	public static void main(String[] args) {
@@ -13,6 +16,11 @@ public class Driver {
 		int user3Id = control.addUser(userGroup1, "Allison");
 		int user4Id = control.addUser(userGroup2, "Loni");
 		int user5Id = control.addUser(rootId, "Lisa");
+
+		for(int i = 1; i < 8; i++)
+		{
+			//control.addUser(rootId, "User" + i);
+		}
 		//User user2 = control.getUser(user2Id);
 
 		user1.createMessage("First message");
@@ -23,22 +31,23 @@ public class Driver {
 
 
 
-		control.printTreeView();
+		//control.printTreeView();
 
-		//System.out.println(sb.toString());
-		for(Message msg : user1.getNewsFeed()){
-			//System.out.println(msg);
-		}
-//		EventQueue.invokeLater(new Runnable() {
-//			@Override
-//			public void run() {
-//				try {
-//					Frame1 window = new Frame1();
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
+		//List<String> displayList = control.getTreeView();
+		List<UserGroupProxy> displayProxies = control.getTreeProxies();
+
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					AdminFrame window = new AdminFrame();
+					//window.setTreeView(displayList);
+					window.setTreeView(displayProxies);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 }

@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class UserGroupCont {
 
@@ -18,6 +20,22 @@ public class UserGroupCont {
 
 	public void printTreeView(){
 		System.out.println(_root.displayString(new StringBuilder(), 0));
+	}
+
+	public List<String> getTreeView(){
+
+		StringBuilder sb = _root.displayString(new StringBuilder(), 0);
+		String[] displayArray = sb.toString().split("\n");
+		List<String> displayList = new LinkedList<String>();
+		for(String line : displayArray){
+			displayList.add(line);
+		}
+
+		return displayList;
+	}
+
+	public List<UserGroupProxy> getTreeProxies(){
+		return _root.displayProxy(new LinkedList<UserGroupProxy>(), 0);
 	}
 
 	public User getUser(int userId){

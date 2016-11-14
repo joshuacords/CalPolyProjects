@@ -27,6 +27,23 @@ public class Group implements IGroup {
 		return display;
 	}
 
+	@Override
+	public List<UserGroupProxy> displayProxy(List<UserGroupProxy> display,
+			int level) {
+
+		display.add(new UserGroupProxy(_groupId, _groupName, false, level));
+
+		if(!_subGroups.isEmpty()){
+			level++;
+			for(IGroup group : _subGroups){
+				group.displayProxy(display, level);
+			}
+			level--;
+		}
+
+		return display;
+	}
+
 	private StringBuilder addBuffer(StringBuilder display, int level){
 		for(int i = 0; i < level; i++){
 			display.append("  ");
@@ -47,7 +64,9 @@ public class Group implements IGroup {
 		return _groupId;
 	}
 
+
 	private int _groupId;
 	private String _groupName;
 	private List<IGroup> _subGroups;
+
 }
